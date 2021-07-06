@@ -1,3 +1,4 @@
+//question- find whether the number has unique digits or not??
 #include <bits/stdc++.h>
 using namespace std;
 int main()
