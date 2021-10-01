@@ -1,0 +1,21 @@
+ int fxn(int k,vector<int>&a,int n)
+ {
+ int maxx=INT_MIN;
+        int i=0,j=0,sum=0;
+        while(j<n)
+        {
+            if(j-i+1<k)
+            {
+                sum=sum+a[j];
+                j++;
+            }
+            else if(j-i+1==k)
+            {
+                maxx=max(maxx,sum);
+                sum=sum-a[i];
+                i++;
+                j++;
+            }
+        }
+        return maxx;
+        }
