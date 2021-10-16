@@ -1,0 +1,15 @@
+public:	
+	
+	string firstAlphabet(string str)
+	{
+	    stringstream s(str);
+	    string word,ans;
+	    int i=0;
+	    while(getline(s,word,' '))
+	    {
+	        ans=ans+word[i];
+	    }
+	    
+	    return ans;
+	}
+};
