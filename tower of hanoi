@@ -1,0 +1,24 @@
+#include<bits/stdc++.h>
+using namespace std;
+int ck=0;
+void toc(int s,int d,int h,int n)
+{   ck++;
+    if(n==1)
+    {cout<<"move"<<n<<"from"<<s<<"to"<<d<<endl;
+     return ;
+    }
+    toc(s,h,d,n-1);
+    cout<<"move"<<n<<"from"<<s<<"to"<<d<<endl;
+    toc(h,d,s,n-1);
+    
+}
+int main()
+{
+   int a=1,b=2,c=3;
+   int n;
+   cin>>n;
+   toc(a,c,b,n);
+   cout<<"number of steps will be"<<ck;
+    return 0;
+}
+//ck is numver of steps
