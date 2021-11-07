@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+   int n;
+   cin>>n;
+   int a=0,b=1;
+   if(n==1)
+   cout<<"0";
+   else if(n==2)
+   cout<<"0"<<" "<<"1";
+   else
+   {
+       cout<<"0"<<" "<<"1"<<" ";
+       n=n-2;
+       while(n--)
+       {
+           int p=a+b;
+           cout<<p<<" ";
+           a=b;
+           b=p;
+       }
+   }
+    return 0;
+}
