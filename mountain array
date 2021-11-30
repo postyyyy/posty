@@ -1,0 +1,38 @@
+class Solution {
+public:
+    bool validMountainArray(vector<int>& a) {
+        int n=a.size();
+        if(n<3)
+            return false;
+        bool b=false ,c=false;
+        int i;
+        for( i=0;i<n-1;i++)
+        { if(a[i]==a[i+1])
+            return false; 
+            
+            if(a[i]>a[i+1])
+            {
+                if(i==0)//this is for edge case if mountain is only decresing.
+                {
+                    b=false;
+                    break;
+                }
+                b=true;
+                break; //pahle tab tak traverse kiye jab tak hame maxi nai mila then we check ki wo proper decrese ho
+            }
+                
+        }
+        for(int j=i+1;j<n-1;j++)
+        {
+            if(a[j]<=a[j+1])
+            {c=true;
+            break;
+            }
+        }
+        if(b==true&&c==false)
+            return true;
+        else
+            return false;
+        
+    }
+};
