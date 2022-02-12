@@ -1,0 +1,46 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()//maximum nikao uske alawa sab ko increse kar do,mai yaya maximum element ka index nikala hu ,fir uss index k alawa har index ko increse ar diya
+{
+    int n;
+    cin>>n;
+    int a[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+   int ans=0;
+    while(1)
+    {   bool b=false;
+       int maxx=INT_MIN;
+       int p;
+       for(int i=0;i<n;i++)
+       {
+           if(a[i]>maxx)
+           {   maxx=a[i];
+               p=i;
+           }
+       }
+        for(int i=0;i<n;i++)
+        {
+            if(p!=i)
+            a[i]=a[i]+1;
+        }
+        for(int i=0;i<n-1;i++)
+        {
+            if(a[i]!=a[i+1])
+            {
+                b=true;
+                break;
+            }
+        }
+        ans++;
+        if(!b)
+        break;
+         
+        
+    }
+    cout<<"minimum number of operatin is "<<ans;
+       return 0;
+}
