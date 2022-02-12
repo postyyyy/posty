@@ -1,0 +1,15 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    list<int>l;
+    l={1,2,3,4,5,6};
+   auto it=l.begin();
+   advance(it,2);//index at which it is pointing and in index 2 7 will br inserted //if we write 7 here then element will be inserted at index 0//gum jata hai
+    l.insert(it,7);
+    for(auto it:l)
+    cout<<it<<" ";
+
+    return 0;
+}
