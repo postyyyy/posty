@@ -1,0 +1,44 @@
+class Solution {
+
+  public:
+    //Function to sort an array using quick sort algorithm.
+
+    void swapp(int & a, int & b) {
+      int temp = a;
+      a = b;
+      b = temp;
+    }
+
+  int partition(int arr[], int s, int e) {
+    int c = 0;
+    int pivut_el = arr[s];
+    for (int i = s + 1; i <= e; i++) {
+      if (pivut_el >= arr[i])
+        c++;
+    }
+    int pivutt = s + c;
+    swapp(arr[s], arr[pivutt]);
+    int i = s, j = e;
+    while (i < pivutt && j > pivutt) {
+      while (arr[i] <= pivut_el)
+        i++;
+
+      while (arr[j] > pivut_el)
+        j--;
+
+      if (i < pivutt && j > pivutt)
+        swapp(arr[i++], arr[j--]);
+    }
+
+    return pivutt;
+
+  }
+  void quickSort(int arr[], int s, int e) {
+    if (s >= e)
+      return;
+    int p = partition(arr, s, e);
+    quickSort(arr, s, p - 1);
+    quickSort(arr, p + 1, e);
+
+  }
+};
