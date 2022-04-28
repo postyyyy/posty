@@ -1,0 +1,38 @@
+input-"11122311"
+output-"31221321";//groups m divide karo input ko and uska count fir wo number print karo;
+
+#include <bits/stdc++.h>
+using namespace std;
+ vector<pair<int,int>> v;
+void fxn(string s)
+{
+ 
+    int c=1;
+    int p=int(s[0])-48;
+    for(int i=1;i<s.length();i++)
+    {
+        if(s[i-1]==s[i])
+         {
+             c++;
+             p= int(s[i-1])-48;
+         }
+         
+         else
+         {
+          
+          v.push_back({c,p});
+          c=1;
+          p=int(s[i])-48;
+         }
+    }
+    v.push_back({c,p});
+}
+int main()
+{string s;
+cin>>s;
+fxn(s);
+    for(auto  it:v)
+    cout<<it.first<<" "<<it.second<<endl;
+
+    return 0;
+}
