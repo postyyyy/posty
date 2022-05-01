@@ -1,0 +1,35 @@
+Input: s = "Let's take LeetCode contest"
+Output: "s'teL ekat edoCteeL tsetnoc"
+
+class Solution {
+public:
+    string reverseWords(string s) {
+        int i=0;
+        for(int j=0;j<s.size();j++){
+            if(s[j]==' '){
+                reverse(s.begin()+i, s.begin()+j);//when find a space just reverse the word;
+                i=j+1;//update j pointer for next reversal
+            }
+        }
+        reverse(s.begin()+i,s.end());//explicitely reverse the last word,as the last word don't has ' '(space) in the end;
+        return s;
+    }
+};
+//
+class Solution {
+public:
+    string reverseWords(string str) {
+        stringstream s(str);
+     string word;
+        string ans="";
+        while(s>>word)
+        { //  string pp=word;
+           reverse(word.begin(),word.end());
+         cout<<word<<" ";
+            ans=ans+word+" ";
+            
+        }
+        ans.pop_back();
+        return ans;
+    }
+};
