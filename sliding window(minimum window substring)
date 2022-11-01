@@ -1,0 +1,117 @@
+agar question m bola hai size of minimum window do jisme (we have 2 strings s and p) p k sarre charaters s k substring m ho
+int Solution(string s, string p) {
+    int n = s.length();
+    int m = p.length();
+    int i = 0, j = 0;
+    int Count = INT_MAX;
+    int l = INT_MAX;
+    unordered_map<char, int> freq;
+
+
+    for (int i = 0; i < m; i++) freq[p[i]]++;
+    Count = freq.size();
+
+
+    if (m < n) {
+        while (j < n) {
+            if (freq.find(s[j]) != freq.end()) {
+                freq[s[j]]--; 
+                if (freq[s[j]] == 0) Count--;
+            }
+
+
+            if (Count > 0) j++;
+
+            if (Count == 0) {
+                l = min(l, j - i + 1);
+                while (Count == 0 && i <= j){
+                    if (freq.find(s[i]) != freq.end()){
+                        freq[s[i]]++;
+                        if (freq[s[i]] == 1) {
+                            l = min(l, j - i + 1);
+                            Count++;
+                        }
+                    }
+                    i++;
+                }
+                j++;
+            }
+        }
+
+        return l;
+    }
+
+    else return -1;
+}
+
+if bola hai ki print the string of minimum size then ,kuch nai vector m answers ki store karo and then sort according to size and returen ans 
+//leetcode m yahh wala version hai
+class Solution {
+public:
+   static bool cmp(string &a,string &b){
+        return a.length()<b.length();
+    }
+    string minWindow(string s, string p) {
+        vector<string> gg;
+     
+          int n = s.length();
+    int m = p.length();
+    int i = 0, j = 0;
+    int Count = 0;
+   
+    unordered_map<char, int> freq;
+
+
+    for (int i = 0; i < m; i++) freq[p[i]]++;
+    Count = freq.size();
+
+
+    if (m <= n) {
+        while (j < n) {
+            if (freq.find(s[j]) != freq.end()) {
+                freq[s[j]]--; 
+                if (freq[s[j]] == 0) Count--;
+            }
+
+
+            if (Count > 0) j++;
+
+            if (Count == 0) {
+                string hh=s.substr(i,j-i+1);
+               gg.push_back(hh);
+                while (Count == 0 && i <= j){
+                    if (freq.find(s[i]) != freq.end()){
+                        freq[s[i]]++;
+                        if (freq[s[i]] == 1) {
+                           string z= s.substr(i,j-i+1);
+                            
+                            gg.push_back(z);
+                            Count++;
+                        }
+                    }
+                    i++;
+                }
+                j++;
+            }
+        }
+        // cout<<"yeh yo";
+        // for(auto i:gg)
+        //     cout<<i<<endl;
+        sort(gg.begin(),gg.end(),cmp);
+        if(gg.size()==0)
+            return "";
+        return gg[0];
+    }
+
+//     else if(n==m)
+//     {
+//         if(s==p)
+//             return s;
+//         else
+//             return "";
+        
+//     }   
+        return "";
+        
+    }
+};
